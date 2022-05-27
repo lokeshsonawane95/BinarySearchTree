@@ -71,6 +71,38 @@ namespace BST
             }
         }
 
+        //For searching a particular value in binary search tree
+        //Contains two parameters 1. value 2. binary search tree
+        public void IsPresent(T element, BinarySearchTree<T> binarySearchTree)
+        {
+            //if the tree is empty
+            if (binarySearchTree == null)
+            {
+                //return false
+                Console.WriteLine("Element is not present");
+            }
+            //if element in the tree is euals to the element we wanted
+            if (binarySearchTree.NodeData.Equals(element))
+            {
+                //print that element is present in the tree
+                Console.WriteLine("\n" + binarySearchTree.NodeData + " is present in BST");
+            }
+
+            //if element is less than the current node we are at
+            if (element.CompareTo(binarySearchTree.NodeData) < 0)
+            {
+                //then search for it in the left subtree
+                IsPresent(element, binarySearchTree.LeftTree);
+            }
+
+            //if element is greater than the current node we are at
+            if (element.CompareTo(binarySearchTree.NodeData) > 0)
+            {
+                //then search for it in the right subtree
+                IsPresent(element, binarySearchTree.RightTree);
+            }
+        }
+
         //For displaying binary search tree
         public void Display()
         {
